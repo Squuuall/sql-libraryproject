@@ -1,0 +1,92 @@
+CREATE DATABASE libraries
+
+CREATE TABLE tbl_book_authors (
+	book_id	VARCHAR (50) PRIMARY KEY NOT NULL,
+	authorname VARCHAR (50) NOT NULL
+	);
+
+CREATE TABLE tbl_book (
+	book_id	INT PRIMARY KEY NOT NULL IDENTITY (1,1),
+	title VARCHAR (50) NOT NULL,
+	publishername VARCHAR (50) NOT NULL
+	);
+
+CREATE TABLE tbl_publisher (
+	publishername VARCHAR (50) PRIMARY KEY NOT NULL,
+	publ_address VARCHAR (50) NOT NULL,
+	phone VARCHAR (50) NOT NULL
+	);
+
+CREATE TABLE tbl_book_loans (
+	bookid INT PRIMARY KEY NOT NULL IDENTITY (1,1),
+	branchid VARCHAR (50) NOT NULL,
+	cardno VARCHAR (50) NOT NULL,
+	dateout VARCHAR (50) NOT NULL,
+	duedate VARCHAR (50) NOT NULL
+	);
+
+CREATE TABLE tbl_book_copies (
+	bookid INT PRIMARY KEY NOT NULL IDENTITY (1,1),
+	branchid VARCHAR (50) NOT NULL,
+	no_of_copies INT NOT NULL,
+	);
+
+CREATE TABLE tbl_borrower (
+	cardno VARCHAR (50) NULL,
+	name VARCHAR (50) NOT NULL,
+	address_borrow VARCHAR (50) NOT NULL,
+	phn VARCHAR (50) NOT NULL
+	);
+
+CREATE TABLE tbl_library_branch (
+	branchid INT PRIMARY KEY NOT NULL IDENTITY (1,1),
+	branchname VARCHAR (50) NOT NULL,
+	address_branch VARCHAR (50) NOT NULL,
+	);
+
+INSERT INTO tbl_book
+	(title, publishername)
+	VALUES
+	('The Mist', 'paperback books'),
+	('The  Lost Tribe', 'bookhaus'),
+	('Harry Potter and the Sorcerers Stone', 'bigbooks'),
+	('Harry Potter and the Chamber of Secrets', 'bigbooks'),
+	('Harry Potter and the Prisoner of Azkaban', 'bigbooks'),
+	('Harry Potter and the Goblet of Fire', 'bigbooks'),
+	('Harry Potter and the Order of the Phoenix', 'bigbooks'),
+	('Harry Potter and the Half Blood Prince', 'bigbooks'),
+	('Harry Potter and the Deathly Hallows', 'bigbooks'),
+	('The Hunger Games', 'prestige'),
+	('Catching Fire', 'prestige'),
+	('The Mockingjay', 'prestige'),
+	('Coding for Dummies', 'dumbooks'),
+	('SQL for Dummies', 'dumbooks'),
+	('HTML5 for Dummies', 'dumbooks'),
+	('CSS3 for Dummies', 'dumbooks'),
+	('Cooking With Fire', 'cookco'),
+	('Lunch Time', 'cookco'),
+	('Dinner Time', 'cookco'),
+	('Dessert Time', 'cookco')
+	;
+
+INSERT INTO tbl_library_branch
+	(branchname, address_branch)
+	VALUES
+	('Central', '4577 central ave'),
+	('Sharpstown', '8092 sharpstown st'),
+	('Downtown', '311 downtown st'),
+	('Woodland', '1411 woodland st')
+	;
+	
+	INSERT INTO tbl_borrower
+	(cardno, name, address_borrow, phn)
+	VALUES
+	('2, 3, 1, 4, 5','Jason Smith', '766 meadow ct', '503-555-7533'),
+	('1, 2, 3, 4, 5','Tracy Ulrich', '9830 southern rd', '503-555-0731'),
+	('','Josh Armstrong', '3459 main st', '503-555-4920'),
+	('','Charles Abney', '1211 purple ln', '503-555-9001'),
+	('','Ben Franklin', '743 airway st', '503-555-1234'),
+	('','Janice Smithers', '9032 lambert ct', '503-555-3049'),
+	('','Amy France', '6392 empire st', '503-555-7849'),
+	('','Lenny Leonardson', '665 larry st', '503-555-9423')
+	;
